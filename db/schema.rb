@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2018_12_16_230415) do
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.integer "access_type"
+    t.integer "access_type", default: 0
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

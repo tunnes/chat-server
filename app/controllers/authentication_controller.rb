@@ -32,9 +32,9 @@ class AuthenticationController < ApplicationController
     Authentication::CryptService.decode(user.try(:password), params[:password])
   end
 
-  def success_response(u)
+  def success_response(user)
     {
-      data: u.as_json(except: :password),
+      data: user.as_json(except: :password),
       token: Authentication::TokenService.encode(user.as_json)
     }
   end

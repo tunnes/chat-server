@@ -17,6 +17,11 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'sidekiq-unique-jobs'
+gem 'sinatra', require: nil
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

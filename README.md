@@ -1,24 +1,8 @@
-# README
+# chat-server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Tasks
+- [x] Improve services decoupling rails models and other resources.
+- [x] Create messages in background process without database connection time.
+- [ ] Improve security points like miss validation.
+- [ ] Deploy live preview on heroku.
+- [ ] Create test (with rubocop and coverage too).
