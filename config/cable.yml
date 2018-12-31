@@ -1,6 +1,6 @@
 redis: &redis
   adapter: redis
-  url: redis://redis:7479
+  url: redis://redis:6379/0
 
 production: *redis
 development: *redis

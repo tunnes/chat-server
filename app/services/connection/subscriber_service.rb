@@ -1,14 +1,11 @@
-class ConversationService
+class Connection::SubscriberService
   def initialize(user)
     @user = user
   end
 
-  def fill_conversations
-    UsersChannel.broadcast_to(@user, fill_conversations_data)
-  end
-
-  def fill_contacts
-    UsersChannel.broadcast_to(@user, fill_contacts_data)
+  def perform
+    Connection::BroadcastService.perform(fill_contacts_data, @user.id)
+    Connection::BroadcastService.perform(fill_conversations_data, @user.id)
   end
 
   private

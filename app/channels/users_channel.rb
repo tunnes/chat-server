@@ -1,24 +1,11 @@
 
 class UsersChannel < ApplicationCable::Channel
   def subscribed
-    stream_for(current_user)
-    conversation_service.fill_conversations()
-    conversation_service.fill_contacts()
+    stream_from("SUBSCRIBLER::#{current_user.id}")
+    Connection::SubscriberService.new(current_user).perform
   end
 
   def receive(data)
-    message_service.perform(data)
+    Connection::PublisherService.new(data).perform
   end
-
-  private
-
-  def conversation_service
-    @conversation_service ||= ConversationService.new(current_user)
-  end
-
-  def message_service
-    # Melhorar essa classe ELA TA UM LIXO!
-    @message_service ||= MessageService.new(current_user)
-  end
-
 end
