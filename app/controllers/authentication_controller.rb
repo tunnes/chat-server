@@ -14,7 +14,7 @@ class AuthenticationController < ApplicationController
       user.save!
       render({ json: success_response(user), status: 200 })
     else
-      render({ json: user.errors, status: 401 })
+      render({ json: user.errors, status: 422 })
     end
   end
 

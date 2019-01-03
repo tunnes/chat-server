@@ -1,21 +1,15 @@
 class Authentication::TokenService
   class << self
     def encode(data)
-      JWT.encode data, secret_key, 'HS256'
+      JWT.encode data, ENV['JWT_SECRECT_KEY'], 'HS256'
     end
 
     def decode(data)
       begin
-        JWT.decode(data, secret_key, true, { algorithm: 'HS256' }).first.symbolize_keys
+        JWT.decode(data, ENV['JWT_SECRECT_KEY'], true, { algorithm: 'HS256' }).first.symbolize_keys
       rescue
         false
       end
-    end
-
-    private
-
-    def secret_key
-      Rails.application.credentials.secret_key_base
     end
   end
 end

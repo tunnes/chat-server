@@ -8,4 +8,4 @@
 - [x] Create messages in background process without database connection time.
 - [ ] Improve security points like miss validation.
 - [ ] Deploy live preview on heroku.
-- [ ] Create test (with rubocop and coverage too).
+- [x] Create test (with coverage too).
