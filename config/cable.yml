@@ -1,8 +1,10 @@
-redis: &redis
+production:
+  adapter: redis
+  url: redis://redistogo:4999542aa9cc42af97d866c881cf7330@spinyfin.redistogo.com:10718/
+
+development:
   adapter: redis
   url: redis://redis:6379/0
 
-production: *redis
-development: *redis
 test:
   adapter: test

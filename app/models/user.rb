@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+  # Associations
   has_and_belongs_to_many :conversations
+
+  # Callbacks
   before_save :encode_password
 
   # Validations

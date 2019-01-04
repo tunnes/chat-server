@@ -82,4 +82,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # websocket:
+  config.web_socket_server_url = "wss://tunnes-chat-server.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://tunnes-chat-client.herokuapp.com', 'http://tunnes-chat-client.herokuapp.com']
 end
