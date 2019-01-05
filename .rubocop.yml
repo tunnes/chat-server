@@ -1,0 +1,23 @@
+Documentation:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - '**/vendor/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/RescueStandardError:
+  Enabled: false
+Style/Documentation:
+  Include:
+    - app/models/**/*
+    - lib/**/*

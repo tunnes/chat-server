@@ -1,10 +1,18 @@
 class AuthenticationController < ApplicationController
   def index
-    render valid_access? ? { json: success_response(user), status: 200 } : { json: nil, status: 401 }
+    if valid_access?
+      render json: success_response(user), status: 200
+    else
+      render json: nil, status: 401
+    end
   end
 
   def validation
-    render valid_token? ? { json: true, status: 200 } : { json: false, status: 401 }
+    if valid_token?
+      render json: true, status: 200
+    else
+      render json: false, status: 401
+    end
   end
 
   def create_user
@@ -12,9 +20,9 @@ class AuthenticationController < ApplicationController
 
     if user.valid?
       user.save!
-      render({ json: success_response(user), status: 200 })
+      render(json: success_response(user), status: 200)
     else
-      render({ json: user.errors, status: 422 })
+      render(json: user.errors, status: 422)
     end
   end
 

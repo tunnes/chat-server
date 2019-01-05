@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'sidekiq/testing'
-require "action_cable/testing/rspec"
+require 'action_cable/testing/rspec'
 
 RSpec.describe Connection::SubscriberService do
   include ActionCable::TestHelper
@@ -24,5 +24,4 @@ RSpec.describe Connection::SubscriberService do
   it "#fill_contacts_data" do
     expect(subject.send(:fill_contacts_data)[:type]).to eq('FILL_CONTACTS')
   end
-
 end

@@ -5,11 +5,11 @@ RSpec.describe UsersChannel, type: :channel do
 
   let(:current_user) { create :user }
   let(:action_cable) { ActionCable.server }
-  let(:users) { [ current_user, create(:user) ] }
+  let(:users) { [current_user, create(:user)] }
   let(:conversation) { create(:conversation, :with_messages, users: users) }
   let(:message) { create(:message, conversation: conversation) }
 
-  let(:create_message_params) do
+  let(:params) do
     {
       type: 'CREATE_MESSAGE',
       payload: {
@@ -30,6 +30,7 @@ RSpec.describe UsersChannel, type: :channel do
   it '#receive' do
     stub_connection(current_user: current_user)
     subscribe
-    expect{ perform(:receive, create_message_params) }.to have_broadcasted_to("SUBSCRIBLER::#{current_user.id}")
+    subscriber_id = "SUBSCRIBLER::#{current_user.id}"
+    expect { perform(:receive, params) }.to have_broadcasted_to(subscriber_id)
   end
 end

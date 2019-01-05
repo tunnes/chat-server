@@ -1,5 +1,5 @@
 require 'rails_helper'
-require "action_cable/testing/rspec"
+require 'action_cable/testing/rspec'
 
 RSpec.describe Connection::BroadcastService do
   include ActionCable::TestHelper
@@ -26,14 +26,14 @@ RSpec.describe Connection::BroadcastService do
     { type: 'CREATE_GROUP', payload: conversation_payload }
   }
 
-  context "#perform" do
-    it "- brodecast create message" do
+  context '#perform' do
+    it '- brodecast create message' do
       expect{
         Connection::PublisherService.new(create_message_params).perform
       }.to have_broadcasted_to("SUBSCRIBLER::#{user.id}").from_channel(UsersChannel)
     end
 
-    it "- brodecast create conversation" do
+    it '- brodecast create conversation' do
       expect{
         Connection::PublisherService.new(create_conversation_params).perform
       }.to have_broadcasted_to("SUBSCRIBLER::#{user.id}").from_channel(UsersChannel)

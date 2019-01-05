@@ -1,4 +1,3 @@
-
 class UsersChannel < ApplicationCable::Channel
   def subscribed
     stream_from("SUBSCRIBLER::#{current_user.id}")
