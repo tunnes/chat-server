@@ -8,8 +8,8 @@
 - [x] Create messages in background process without database connection time.
 - [x] Deploy live preview on heroku.
 - [x] Create test (with coverage too).
+- [x] LMAO Why the /sidekiq route is public in production ???
+- [x] Remove production keys and create an decent env.
 - [ ] Improve security points like miss validation.
-- [ ] Remove production keys and create an decent env.
-- [ ] Write a human README.md!
 - [ ] Validations dude.. validations.
-- [ ] LMAO Why the /sidekiq route is public in production ???
+- [ ] Write a human README.md!

@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   post '/authentication/validation', action: :validation, controller: 'authentication'
   post '/user', action: :create_user, controller: 'authentication'
 
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount Sidekiq::Web => '/sidekiq'
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_WEB_USER'])) &
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_WEB_PASSWORD']))
+  end
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
-
-  get 'job/submit/:who/:message', to: 'job#submit'
 end
